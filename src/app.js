@@ -4,11 +4,13 @@ const app = express();
 const bcrypt = require("bcryptjs");
 const path = require("path");
 const hbs = require("hbs");
+const cookieParser = require("cookie-parser");
 const router = require("./routers/route");
 require("./database/conn");
 const staticPath = path.join(__dirname , "../public");
 app.use(express.static(staticPath));
 const Student = require("./models/studentModel");
+app.use(cookieParser());
 app.use(router);
 app.set("view engine" , "hbs");
 app.use(express.json());
@@ -27,7 +29,10 @@ app.post("/register" , async (req,res)=>{
         if(password === cpassword){
             const member = new Student(req.body);
             const memberAdded = await member.save();
-            await member.generateToken();
+            const token = await member.generateToken();
+            res.cookie("jwt" , token , {
+                httpOnly : true
+            })
             res.render("login");
         }else{
             res.send("Password did not match ....");
@@ -50,7 +55,7 @@ app.post("/login" ,async (req,res)=>{
                 const token = await member.generateToken();
                 res.cookie("jwt" , token , {
                     httpOnly : true,
-                    
+                    // expires : new Date(Date.now() + 5000)
                 })
                 res.render("index");
             }else{
