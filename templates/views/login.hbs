@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>metaTag}}
+</head>
+<body>
+    <div class="set">
+        {{>navbar}}
+
+        <div class="input-data">
+            <h2>login to get connected ...</h2>
+            <form action="/login" method="POST">
+                <div class="field">
+                    <input type="email" name = "email" placeholder="enter your email here ....">
+                </div>
+                <div class="field">
+                    <input type="password" name = "password" placeholder="enter your password here ....">
+                </div>
+                <button style="cursor : pointer" class="secondary-btn" type="submit">submit</button>
+            </form>
+        </div>
+
+    </div>
+    {{>footer}}
+</body>
+</html>

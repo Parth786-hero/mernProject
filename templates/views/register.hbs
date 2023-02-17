@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {{>metaTag}}
+</head>
+<body>
+    <div class="set">
+        {{>navbar}}
+
+
+
+        <div class="input-data">
+            <h2>be my guest .....</h2>
+            <form action="/register" method="POST">
+                <div class="field">
+                    <input type="text" name = "name" placeholder="enter your name here ....">
+                </div>
+                <div class="field">
+                    <input type="number" name = "age" placeholder="enter your age here ....">
+                </div>
+                <div class="field">
+                    <input type="email" name = "email" placeholder="enter your email here ....">
+                </div>
+                <div class="field">
+                    <input type="number" name = "number" placeholder="enter your number here ....">
+                </div>
+                <div class="field">
+                    <input type="password" name = "password" placeholder="enter your password here ....">
+                </div>
+                <div class="field">
+                    <input type="password" name = "cpassword" placeholder="enter your confirm password here ....">
+                </div>
+                <button class="secondary-btn" type="submit">submit</button>
+            </form>
+        </div>
+    </div>
+    {{>footer}}
+</body>
+</html>
